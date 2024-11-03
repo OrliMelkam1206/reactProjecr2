@@ -3,17 +3,18 @@ import { useState } from "react";
 
 
 
-function SignUp() {
+function SignUp(props) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
-    
+
     const twoInitialPlayers = [{ username: "noi", password: '123', isPlaying: true },
     { username: "orli", password: '123', isPlaying: true }];
     localStorage.setItem('players', JSON.stringify(twoInitialPlayers));
+
     const onRegister = () => {
-    let exist = false;
-    const players = JSON.parse(localStorage.getItem('players'));
-    for (let i = 0; i < players.length; i++) {
+        let exist = false;
+        const players = JSON.parse(localStorage.getItem('players'));
+        for (let i = 0; i < players.length; i++) {
             if (players[i].username === username && players[i].password === password) {
                 exist = true;
                 alert('exist');
@@ -23,7 +24,9 @@ function SignUp() {
             players.push({ username: username, password: password, isPlaying: true });
             localStorage.setItem('players', JSON.stringify(players));
         }
+        props.setStartDisplay(true);
     }
+
     return (
         <form>
             <h1>sign up!</h1>
