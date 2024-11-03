@@ -4,21 +4,19 @@ import { useState } from "react";
 function BoardGame(props) {
     const [num, setNum] = useState(Math.floor(Math.random() * 99));
     const [score, setScore] = useState(0);
-    const [activePlayer, setActivePlayer] = useState(0);
 
     const playerPlaying = () => {
-        if (props.name === props.playingPlayers[activePlayer].username) {
+        if (props.name === props.playingPlayers[props.activePlayer].username) {
         return true;
     }
     else
         return false;
     }
 
-
     const plusOne = () => {
         setNum(num + 1);
         setScore(score + 1)
-        setActivePlayer(activePlayer + 1)
+        props.setActivePlayer(props.activePlayer + 1)
         if (num + 1 === 100) {
             const newPlayers = props.playingPlayers.filter(player => player.username !== props.name)
             props.setPlayingPlayers(newPlayers);
@@ -27,7 +25,7 @@ function BoardGame(props) {
     const minusOne = () => {
         setNum(num - 1);
         setScore(score + 1)
-        setActivePlayer(activePlayer + 1)
+        props.setActivePlayer(props.activePlayer + 1)
         if (num - 1 === 100) {
             props.setPlayingPlayers(props.playingPlayers.filter(player => player.username !== props.name));
         }
@@ -35,7 +33,7 @@ function BoardGame(props) {
     const multiplyByTwo = () => {
         setNum(num * 2);
         setScore(score + 1)
-        setActivePlayer(activePlayer + 1)
+        props.setActivePlayer(props.activePlayer + 1)
         if (num * 2 === 100) {
             props.setPlayingPlayers(props.playingPlayers.filter(player => player.username !== props.name));
         }
@@ -43,7 +41,7 @@ function BoardGame(props) {
     const divideByTwo = () => {
         setNum(num / 2);
         setScore(score + 1)
-        setActivePlayer(activePlayer + 1)
+        props.setActivePlayer(props.activePlayer + 1)
         if (num / 2 === 100) {
             props.setPlayingPlayers(props.playingPlayers.filter(player => player.username !== props.name));
         }
