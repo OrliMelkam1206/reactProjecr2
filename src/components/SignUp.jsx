@@ -7,8 +7,8 @@ function SignUp(props) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
 
-    const twoInitialPlayers = [{ username: "noi", password: '123', isPlaying: true },
-    { username: "orli", password: '123', isPlaying: true }];
+    const twoInitialPlayers = [{ username: "noi", password: '123', isPlaying: true, scores: []},
+    { username: "orli", password: '123', isPlaying: true, scores: [] }];
     localStorage.setItem('players', JSON.stringify(twoInitialPlayers));
 
     const onRegister = () => {
@@ -21,7 +21,7 @@ function SignUp(props) {
             }
         }
         if (exist === false) {
-            players.push({ username: username, password: password, isPlaying: true });
+            players.push({ username: username, password: password, isPlaying: true, scores: [] });
             localStorage.setItem('players', JSON.stringify(players));
         }
         props.setStartDisplay(true);

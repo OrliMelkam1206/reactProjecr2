@@ -8,10 +8,10 @@ function BoardGame(props) {
 
     const playerPlaying = () => {
         if (props.name === props.playingPlayers[activePlayer].username) {
-        return true;
-    }
-    else
-        return false;
+            return true;
+        }
+        else
+            return false;
     }
 
 
@@ -49,7 +49,7 @@ function BoardGame(props) {
         <div className="board-game">
             <h2>{props.name}</h2>
             <div>{num}</div>
-            {playerPlaying &&
+            {playerPlaying() &&
                 <div className="buttons-container">
                     <button onClick={plusOne}>+1</button>
                     <button onClick={minusOne}>-1</button>
