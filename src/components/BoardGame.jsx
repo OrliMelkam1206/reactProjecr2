@@ -17,22 +17,22 @@ function BoardGame(props){
         setNum(num - 1);
         setScore(score + 1)
         if(num - 1 === 100){
-            props.setPlayingPlayers(props.playingPlayers.filter(player => player.username !== props.name));
-        }
+            const newPlayers = props.playingPlayers.filter(player => player.username !== props.name)
+            props.setPlayingPlayers(newPlayers);        }
     }
     const multiplyByTwo = () => {
         setNum(num * 2);
         setScore(score + 1)
         if(num * 2 === 100){
-            props.setPlayingPlayers(props.playingPlayers.filter(player => player.username !== props.name));
-        }
+            const newPlayers = props.playingPlayers.filter(player => player.username !== props.name)
+            props.setPlayingPlayers(newPlayers);        }
     }
     const divideByTwo = () => {
         setNum(num / 2);
         setScore(score + 1)
         if(num / 2 === 100){
-            props.setPlayingPlayers(props.playingPlayers.filter(player => player.username !== props.name));
-        }
+            const newPlayers = props.playingPlayers.filter(player => player.username !== props.name)
+            props.setPlayingPlayers(newPlayers);        }
     }
     return(
         <div className="board-game">
