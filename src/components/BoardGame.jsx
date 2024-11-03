@@ -50,7 +50,7 @@ function BoardGame(props) {
         <div className="board-game">
             <h2>{props.name}</h2>
             <div>{num}</div>
-            {playerPlaying &&
+            {playerPlaying() &&
                 <div className="buttons-container">
                     <button onClick={plusOne}>+1</button>
                     <button onClick={minusOne}>-1</button>
