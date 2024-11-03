@@ -7,11 +7,13 @@ function SignUp(props) {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
 
-    const twoInitialPlayers = [{ username: "noi", password: '123', isPlaying: true, scores: []},
-    { username: "orli", password: '123', isPlaying: true, scores: [] }];
-    localStorage.setItem('players', JSON.stringify(twoInitialPlayers));
+    // const twoInitialPlayers = [{ username: "noi", password: '123', isPlaying: true, scores: []},
+    // { username: "orli", password: '1206', isPlaying: true, scores: [] }, 
+    // { username: "tamar", password: '666', isPlaying: true, scores: []}];
+    // localStorage.setItem('players', JSON.stringify(twoInitialPlayers));
 
-    const onRegister = () => {
+    const onRegister = (e) => {
+        e.preventDefault()
         let exist = false;
         const players = JSON.parse(localStorage.getItem('players'));
         for (let i = 0; i < players.length; i++) {
@@ -24,7 +26,7 @@ function SignUp(props) {
             players.push({ username: username, password: password, isPlaying: true, scores: [] });
             localStorage.setItem('players', JSON.stringify(players));
         }
-        props.setStartDisplay(true);
+        props.setStartDisplay();
     }
 
     return (
