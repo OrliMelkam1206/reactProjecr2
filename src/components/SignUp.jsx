@@ -32,7 +32,10 @@ function SignUp(props) {
             }
         }
         props.setStartDisplay(true);
-        props.setSignUpDisplay(prev => !prev)
+        props.setSignUpDisplay(false)
+        props.setAddPlayerDisplay(prev => !prev);
+        props.setPlayingPlayers(players.filter(player => player.isPlaying));
+
     }
 
     return (

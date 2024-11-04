@@ -1,12 +1,11 @@
 import { useState } from "react";
 import BoardGame from './BoardGame';
 
-function StartGame() {
-    const players = JSON.parse(localStorage.getItem('players'));
-    const [playingPlayers, setPlayingPlayers] = useState(players.filter(player => player.isPlaying));
+function StartGame(props) {
+    
+    console.log(props.playingPlayers);
     const [started, setStarted] = useState(false);
     const [activePlayer, setActivePlayer] = useState(0);
-
     const displayBoardsGame = () => {
         setStarted(true);
         // setStartDisplay(prev => !prev);
@@ -16,10 +15,10 @@ function StartGame() {
         <>
             {!started && <button onClick={displayBoardsGame}>start game</button>}
             <div className="board-gameContainer">
-                {started && playingPlayers.map((player) => <BoardGame key={player.username}
+                {started && props.playingPlayers.map((player) => <BoardGame key={player.username}
                     name={player.username}
-                    setPlayingPlayers={setPlayingPlayers}
-                    playingPlayers={playingPlayers}
+                    setPlayingPlayers={props.setPlayingPlayers}
+                    playingPlayers={props.playingPlayers}
                     activePlayer={activePlayer}
                     setActivePlayer={setActivePlayer} />)}
             </div>
