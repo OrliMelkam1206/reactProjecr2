@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { useState } from "react";
 
@@ -99,6 +100,7 @@ function BoardGame(props) {
         }
     }
     return (
+        // <div className="board-gameContainer">
         <div className="board-game">
             <h2>{props.name}</h2>
             <div>{num}</div>
@@ -112,6 +114,7 @@ function BoardGame(props) {
             }
             <div>{score}</div>
         </div>
+        // </div>
     )
 }
 
