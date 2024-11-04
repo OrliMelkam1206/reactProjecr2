@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import BoardGame from './BoardGame';
 
@@ -7,14 +6,16 @@ function StartGame() {
     const [playingPlayers, setPlayingPlayers] = useState(players.filter(player => player.isPlaying));
     const [started, setStarted] = useState(false);
     const [activePlayer, setActivePlayer] = useState(0);
+
     const displayBoardsGame = () => {
         setStarted(true);
+        // setStartDisplay(prev => !prev);
     }
 
     return (
         <>
             <button onClick={displayBoardsGame}>start game</button>
-            {started && playingPlayers.map((player, index) => <BoardGame key={player.username}
+            {started && playingPlayers.map((player) => <BoardGame key={player.username}
                 name={player.username}
                 setPlayingPlayers={setPlayingPlayers}
                 playingPlayers={playingPlayers}
