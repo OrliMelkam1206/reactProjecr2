@@ -31,7 +31,7 @@ function SignUp(props) {
                 localStorage.setItem('players', JSON.stringify(players));
             }
         }
-        props.setStartDisplay();
+        props.setStartDisplay(true);
         props.setSignUpDisplay(prev => !prev)
     }
 
