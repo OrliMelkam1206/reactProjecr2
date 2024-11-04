@@ -36,20 +36,23 @@ function SignUp(props) {
     }
 
     return (
+        <div className="formContainer">
         <form>
-            <h1>sign up!</h1>
-            <div>
+            <h1>  Make it to a hundred  </h1><br/>
+            <h2> sign up! </h2><br/>
+            <div><br/>
                 <label id="username-label" >username</label>
                 <input value={username} type="text" id="username" placeholder="username" onChange={(e) => { setUsername(e.target.value); }} required />
             </div>
-            <div>
+            <div><br/>
                 <label>Password</label>
                 <input value={password} type="password" id="password" name="psw" onChange={(e) => { setPassword(e.target.value); }} required />
             </div>
-            <div>
+            <div><br/>
                 <button id="submit" onClick={onRegister}>submit</button>
             </div>
         </form>
+        </div>
     )
 }
 
