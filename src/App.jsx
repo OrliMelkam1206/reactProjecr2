@@ -14,9 +14,9 @@ function App() {
   
   return (
     <>
-      {signUpDisplay && <SignUp setStartDisplay={displayStartGame} setSignUpDisplay={setSignUpDisplay}/>}
-      {startDisplay && <StartGame setSignUpDisplay={setSignUpDisplay}/>}
       <button onClick={() => setSignUpDisplay(true)}>add player</button>
+      {signUpDisplay && <SignUp setStartDisplay={displayStartGame} setSignUpDisplay={setSignUpDisplay}/>}
+      {startDisplay && <StartGame />}
       
     </>
   )
