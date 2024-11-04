@@ -16,17 +16,23 @@ function SignUp(props) {
         e.preventDefault()
         let exist = false;
         const players = JSON.parse(localStorage.getItem('players'));
-        for (let i = 0; i < players.length; i++) {
-            if (players[i].username === username && players[i].password === password) {
-                exist = true;
-                alert('exist');
+        if (!players) {
+            localStorage.setItem('players', JSON.stringify([{ username: username, password: password, isPlaying: true, scores: [] }]));
+        }
+        else {
+            for (let i = 0; i < players.length; i++) {
+                if (players[i].username === username && players[i].password === password) {
+                    exist = true;
+                    alert('exist');
+                }
+            }
+            if (exist === false) {
+                players.push({ username: username, password: password, isPlaying: true, scores: [] });
+                localStorage.setItem('players', JSON.stringify(players));
             }
         }
-        if (exist === false) {
-            players.push({ username: username, password: password, isPlaying: true, scores: [] });
-            localStorage.setItem('players', JSON.stringify(players));
-        }
         props.setStartDisplay();
+        props.setSignUpDisplay(prev => !prev)
     }
 
     return (

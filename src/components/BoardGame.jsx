@@ -80,7 +80,7 @@ function BoardGame(props) {
         }
     }
     const divideByTwo = () => {
-        setNum(num / 2);
+        setNum(Math.floor(num / 2));
         setScore(score + 1)
         if (props.activePlayer === props.playingPlayers.length - 1) {
             props.setActivePlayer(0)
@@ -88,7 +88,7 @@ function BoardGame(props) {
         else {
             props.setActivePlayer(props.activePlayer + 1)
         }
-        if (num / 2 === 100) {
+        if (Math.floor(num / 2) === 100) {
             props.setPlayingPlayers(props.playingPlayers.filter(player => player.username !== props.name));
             if (props.activePlayer === props.playingPlayers.length - 1) {
                 props.setActivePlayer(0)
