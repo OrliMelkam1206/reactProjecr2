@@ -6,16 +6,16 @@ import StartGame from './components/StartGame'
 function App() {
   const [signUpDisplay, setSignUpDisplay] = useState(false);
   const [startDisplay, setStartDisplay] = useState(false);
-  function displayStartGame() {
-    setStartDisplay(prev => !prev)}
-  function stopDisplayStartGame() {
-    setSignUpDisplay(prev => !prev)
-  }
+  // function displayStartGame() {
+  //   setStartDisplay(prev => !prev)}
+  // function stopDisplayStartGame() {
+  //   setSignUpDisplay(true)
+  // }
   
   return (
     <>
       <button onClick={() => setSignUpDisplay(true)}>add player</button>
-      {signUpDisplay && <SignUp setStartDisplay={displayStartGame} setSignUpDisplay={setSignUpDisplay}/>}
+      {signUpDisplay && <SignUp setStartDisplay={setStartDisplay} setSignUpDisplay={setSignUpDisplay}/>}
       {startDisplay && <StartGame />}
       
     </>
