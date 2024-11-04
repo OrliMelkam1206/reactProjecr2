@@ -3,7 +3,6 @@ import BoardGame from './BoardGame';
 
 function StartGame(props) {
     
-    console.log(props.playingPlayers);
     const [started, setStarted] = useState(false);
     const [activePlayer, setActivePlayer] = useState(0);
     const displayBoardsGame = () => {

@@ -93,11 +93,27 @@ button:hover {
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  width: 25vw;
+  width: 26vw;
   height: 30vh;
 }
 
 .buttons-container{
   display: flex;
   justify-content: space-between;
+}
+
+.finish-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+table{
+  width: 40vw;
+  background-color: #2b3a67;
+  border: #2b3a67 2px solid;
+  font-size: 25px;
+}
+
+th, td{
+  background-color: #e6e9ef;
 }

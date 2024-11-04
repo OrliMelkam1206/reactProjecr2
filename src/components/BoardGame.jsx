@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 function BoardGame(props) {
-    const [num, setNum] = useState(99);
+    const [num, setNum] = useState(Math.floor(Math.random() * 99));
     const [score, setScore] = useState(0);
     const [finish, setFinish] = useState(false);
 
@@ -34,47 +34,52 @@ function BoardGame(props) {
     const minusOne = () => {
         setNum(num - 1);
         setScore(score + 1)
-        if (props.activePlayer === props.playingPlayers.length - 1) {
-            props.setActivePlayer(0)
-        }
-        else {
-            props.setActivePlayer(props.activePlayer + 1)
-        }
         if (num - 1 === 100) {
             gotToHundred();
+        }
+        else {
+            if (props.activePlayer === props.playingPlayers.length - 1) {
+                props.setActivePlayer(0)
+            }
+            else {
+                props.setActivePlayer(props.activePlayer + 1)
+            }
         }
     }
     const multiplyByTwo = () => {
         setNum(num * 2);
         setScore(score + 1)
-        if (props.activePlayer === props.playingPlayers.length - 1) {
-            props.setActivePlayer(0)
-        }
-        else {
-            props.setActivePlayer(props.activePlayer + 1)
-        }
         if (num * 2 === 100) {
             gotToHundred();
+        }
+        else {
+            if (props.activePlayer === props.playingPlayers.length - 1) {
+                props.setActivePlayer(0)
+            }
+            else {
+                props.setActivePlayer(props.activePlayer + 1)
+            }
         }
     }
     const divideByTwo = () => {
         setNum(Math.floor(num / 2));
         setScore(score + 1)
-        if (props.activePlayer === props.playingPlayers.length - 1) {
-            props.setActivePlayer(0)
-        }
-        else {
-            props.setActivePlayer(props.activePlayer + 1)
-        }
         if (Math.floor(num / 2) === 100) {
             gotToHundred();
+        }
+        else {
+            if (props.activePlayer === props.playingPlayers.length - 1) {
+                props.setActivePlayer(0)
+            }
+            else {
+                props.setActivePlayer(props.activePlayer + 1)
+            }
         }
     }
     const gotToHundred = () => {
         let updatedPlayers = JSON.parse(localStorage.getItem('players'));
         for (let i = 0; i < updatedPlayers.length; i++) {
             if (updatedPlayers[i].username === props.name) {
-                updatedPlayers[i].isPlaying = false;
                 updatedPlayers[i].scores.push(score + 1);
                 localStorage.setItem('players', JSON.stringify(updatedPlayers));
             }
@@ -89,6 +94,13 @@ function BoardGame(props) {
         }
         else {
             props.setActivePlayer(props.activePlayer)
+        }
+        let updatedPlayers = JSON.parse(localStorage.getItem('players'));
+        for (let i = 0; i < updatedPlayers.length; i++) {
+            if (updatedPlayers[i].username === props.name) {
+                updatedPlayers[i].isPlaying = false;
+                localStorage.setItem('players', JSON.stringify(updatedPlayers));
+            }
         }
     }
     const newGame = () => {
@@ -110,7 +122,7 @@ function BoardGame(props) {
                 </div>
             }
             {finish &&
-                <div>
+                <div className="finish-container">
                     <button onClick={logOut}>log out</button>
                     <button onClick={newGame}>new game</button>
                 </div>}
