@@ -14,7 +14,7 @@ function StartGame() {
 
     return (
         <>
-            <button onClick={displayBoardsGame}>start game</button>
+            {!started && <button onClick={displayBoardsGame}>start game</button>}
             {started && playingPlayers.map((player) => <BoardGame key={player.username}
                 name={player.username}
                 setPlayingPlayers={setPlayingPlayers}
